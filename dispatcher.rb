@@ -26,7 +26,7 @@ class Dispatcher
                     poker_session_id, status = poker_session_creator.create(number_of_voting,token)
                     start_checker(status,poker_session_id)
                 else
-                     puts "Wrong amount of voting people!"
+                    puts "Wrong arguments!"
                 end            
 
             when "vote"
@@ -50,7 +50,7 @@ class Dispatcher
                     puts "Wrong session id!"
                 end
             else
-                 puts "Wrong command!"
+                puts "Wrong command!"
             end        
         end
     end

@@ -8,6 +8,7 @@ class ResetHandler
         response = Net::HTTP.post_form(uri,params)
         body_json = JSON.parse(response.body, object_class: OpenStruct)
         puts "Wrong session id!" if body_json.status == 404 
+        puts body_json.message
         body_json.status
     end
 end

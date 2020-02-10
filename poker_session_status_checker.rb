@@ -14,8 +14,8 @@ class PokerSessionStatusChecker
             response =  Net::HTTP.get(uri)
             response_json = JSON.parse(response, object_class: OpenStruct)
             data_json = JSON.parse(response_json.data, object_class: OpenStruct)            
-            votes_count = data_json.votes_count
-            
+            votes_count = data_json.votes.count
+            puts data_json
             if(prev != data_json.votes_count)
                 voting_amount = data_json.number_of_voting
                 puts '[' + '#'*votes_count*2 + ' '*(voting_amount-votes_count)*2 + ']'

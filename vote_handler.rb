@@ -7,6 +7,7 @@ class VoteHandler
         params = {:value => vote_value,:token => token}
         response = Net::HTTP.post_form(uri,params)
         response_body = JSON.parse(response.body, object_class: OpenStruct) 
+        puts "Wrong session id" if response_body.status == 404
         puts response_body.message
         response_body.status
     end
