@@ -11,6 +11,5 @@ class PokerSessionCreator
         puts body_json.message
         puts "Poker session id : " + body_json.data.id.to_s
         [body_json.data.id, body_json.status]
-
     end
 end
