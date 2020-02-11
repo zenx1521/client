@@ -17,7 +17,7 @@ class Dispatcher
     authenticator = UserAuthenticator.new
     login_status = authenticator.authenticate(token) 
 
-    if login_status == "SUCCESS"
+    if login_status
       case @arguments[0].downcase
       when "start"
         number_of_voting = @arguments[1].to_i
@@ -58,7 +58,7 @@ class Dispatcher
   private
 
   def start_checker(status,poker_session_id)
-    if status == "SUCCESS"
+    if status
       status_checker = PokerSessionStatusChecker.new(poker_session_id,AVAILABLE_OPTIONS)
       status_checker.run
     end
