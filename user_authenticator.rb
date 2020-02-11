@@ -13,6 +13,7 @@ class UserAuthenticator
     response_body = JSON.parse(response.body,object_class: OpenStruct)
     puts ERRORS[response_body.error] if response_body.error
     if response_body.status == "SUCCESS"
+        puts "Logged in successfully"
         return true
     end
     false

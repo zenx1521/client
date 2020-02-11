@@ -10,9 +10,12 @@ class PokerSessionCreator
     uri = URI('http://localhost:3000/api/v1/poker_sessions')
     params = {:number_of_voting => number_of_voting, :token => token}
     response = Net::HTTP.post_form(uri,params)
-    body_json = JSON.parse(response.body, object_class: OpenStruct)
-    status = body_json.error ? false : true
-    puts ERRORS[body_json.error] if status
-    [body_json.data.id, status]
+    response_body = JSON.parse(response.body, object_class: OpenStruct)
+    status = response_body.error.nil? ? true : false
+    puts ERRORS[response_body.error] unless status
+    if status
+      puts "Session id: " + response_body.data.id.to_s
+    end
+    [response_body.data.id, status]
   end
 end
