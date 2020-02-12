@@ -45,7 +45,7 @@ class PokerSessionStatusChecker
       statistics[vote.value][0] += vote.user.name + ' '
       statistics[vote.value][1] += 1 
     end 
-    
+
     statistics.each do |key,value|            
       if value[0] == ""
         puts key.to_s + ": -"
@@ -53,9 +53,12 @@ class PokerSessionStatusChecker
         puts key.to_s + ": " + value[0]
       end 
     end
+
     for_draw_check =  statistics.map { |key,value| value[1]}.sort { |left,right| right <=> left }
     if(for_draw_check[0] == for_draw_check[1])
       puts "There was a draw!!!"
-    end    
+    else 
+      puts "Final note: " + statistics.sort_by {|key,value| value[1]}.reverse.to_h.keys[0].to_s
+    end 
   end
 end
