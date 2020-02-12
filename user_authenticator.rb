@@ -3,7 +3,7 @@ class UserAuthenticator
   require 'json'
 
   ERRORS = {
-      "USER_NOT_FOUND" => "User with this token doesn't exist"
+    "USER_NOT_FOUND" => "User with this token doesn't exist"
   }
 
   def authenticate(token)
